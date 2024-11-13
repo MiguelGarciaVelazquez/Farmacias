@@ -12,14 +12,14 @@ class User {
         $this->conn = $database->getConnection();
     }
 
-    //getAllUsers
-    public function getMedicamentosTOP() {   ///productos TOP mas buscados
+    //ontener los medicamentos top
+        public function getMedicamentosTOP() {   ///productos TOP mas buscados
         $query = "SELECT * FROM  " . $this->table_Medicamentos. " LIMIT 10" ;
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+   // Buscar medicamento por nombre tipo o descripcion
     public function searchMedicamento($keyword) {
         $query = "SELECT farmacia.id as farmaciaId,medicinas.Id as medicinaId,farmacia.Nombre as farmaciaNombre,medicinas.Nombre as medicinasNombre,
         medicinas.Tipo,medicinas.Precio,farmacia.ServicioDomicilio,farmacia.CostoServDomicilio,medicina_image.path as imagepath, 
@@ -34,16 +34,17 @@ class User {
         $stmt->execute([$keyword, $keyword]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+        //Obtener el detalle de farmacia, el medicamento buscado
         public function getProductDetail($farmaciaId, $medicinaId) {
      
             $stmt = $this->conn->prepare("SELECT 
             farmacia.Nombre as farmaciaNombre,farmacia.Direccion as farmaciaDireccion,farmacia.Telefono as farmaciaTelefono,
             farmacia.NombreEncargado as farmaciaNombreEncargado,farmacia.Correo as farmaciaCorreo,medicinas.Nombre as medicinasNombre,
-            medicinas.Existencias as medicinasExistencias,medicinas.Tipo as medicinasTipo,medicinas.Receta as medicinasReceta  
+            medicinas.Existencias as medicinasExistencias,medicinas.Tipo as medicinasTipo,medicinas.Receta as medicinasReceta,  farmacia_logo.Path as logopath  
             FROM `farmacia`
             INNER JOIN medicinas ON medicinas.Id_Farmacia = farmacia.Id
             LEFT JOIN bancarios AS banco ON banco.Id_Farmacia = farmacia.Id
+            INNER JOIN farmacia_logo on farmacia_logo.Id = farmacia.Id_Logo
             WHERE medicinas.Id_Farmacia = :farmaciaId AND medicinas.Id = :medicinaId");
     
         // Vincular los parámetros
@@ -58,10 +59,4 @@ class User {
     
     }
 
-
-   public function deleteUser($id) {
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
-        return $stmt->execute([$id]);
-    }
 }

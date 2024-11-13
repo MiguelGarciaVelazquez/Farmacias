@@ -20,7 +20,7 @@ switch ($action) {
     case 'search': // Acción de búsqueda
         $controller->search();
         break;
-    case 'detail': // Acción de búsqueda
+    case 'detail': // Acción de búsqueda detallada
         $controller->detail();
         break;
     default:

@@ -182,8 +182,95 @@
     cursor: pointer;
 }
 
-
-  /* Clases para los colores */
+  /* Clases para los colores en el mensaje de nota importante */
   
   .numero_1 { color: red; }
   .numero_0 { color: green; }
+  
+/* Estilo general para el body */
+body {
+    font-family: Arial, sans-serif;      /* Fuente general */
+    background-color: #f4f4f9;           /* Color de fondo suave */
+    color: #333;                         /* Color de texto */
+    margin: 0;
+    padding: 20px;
+}
+
+/* Estilo del encabezado h2 */
+h2 {
+    color: #007bff;                      /* Color del texto */
+    font-size: 24px;                     /* Tamaño de fuente */
+    text-align: center;                  /* Centrar el encabezado */
+    margin-bottom: 20px;                 /* Espacio inferior */
+    background-color: #e6f2ff;
+}
+
+/* Estilos para los párrafos generales */
+p {
+    font-size: 16px;                     /* Tamaño de fuente */
+    line-height: 1.6;                    /* Altura de línea */
+    margin-bottom: 10px;                 /* Espacio inferior entre párrafos */
+}
+
+/* Estilo para los párrafos destacados */
+.parrafo-destacado {
+    font-weight: bold;                   /* Negrita */
+    color: #333;                         /* Color del texto */
+    background-color: #e6f2ff;           /* Fondo azul claro */
+    padding: 10px;                       /* Relleno interior */
+    border-left: 4px solid #007bff;      /* Borde izquierdo para resaltar */
+    border-radius: 5px;                  /* Bordes redondeados */
+    margin-bottom: 15px;                 /* Espacio inferior */
+}
+
+/* Estilo para el mensaje de receta médica (requiere receta) */
+.numero_1 {
+    color: #d9534f;                      /* Color rojo para advertencia */
+    font-weight: bold;
+    background-color: #ffe6e6;           /* Fondo rojo claro */
+    padding: 10px;
+    border-left: 4px solid #d9534f;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Estilo para el mensaje de venta libre */
+.numero_0 {
+    color: #5cb85c;                      /* Color verde */
+    font-weight: bold;
+    background-color: #e6ffe6;           /* Fondo verde claro */
+    padding: 10px;
+    border-left: 4px solid #5cb85c;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Estilo para texto en negrita */
+strong {
+    color: #333;                         /* Color del texto */
+}
+
+
+/* Estilo para el contenedor principal */
+.contenedor-detalle {
+    display: flex;                /* Alinear en fila */
+    justify-content: space-between; /* Espacio entre contenido y logo */
+    align-items: flex-start;      /* Alinear al inicio vertical */
+}
+
+/* Estilo para el contenedor de la información */
+.detalle-info {
+    flex: 1;                      /* Ocupa el ancho restante */
+    padding-right: 20px;          /* Espacio a la derecha */
+}
+
+/* Estilo para el contenedor del logo */
+.logo {
+    width: 150px;                 /* Ancho del logo */
+    text-align: center;           /* Centrar contenido dentro del div */
+}
+
+.logo img {
+    max-width: 100%;              /* Ajustar tamaño de la imagen */
+    height: auto;
+}
